@@ -23,3 +23,4 @@
 00_archive/log_files/*
 03_data/indexed*
 04_annotation/*
+05_results/*
