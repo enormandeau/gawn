@@ -4,7 +4,7 @@
 
 Developed by [Eric Normandeau](https://github.com/enormandeau) in
 [Louis Bernatchez](http://www.bio.ulaval.ca/louisbernatchez/presentation.htm)'s
-laboratory and based on initial suggestions and code from
+laboratory with initial suggestions and code from
 [Jérémy Le Luyer](https://github.com/jleluyer).
 
 See license information at the end of this file.
