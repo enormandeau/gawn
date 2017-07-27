@@ -1,12 +1,10 @@
 # GAWN v0.1
 
-## GAWN (Genome Annotation Without Nightmares)
+## Genome Annotation Without Nightmares
 
 Developed by [Eric Normandeau](https://github.com/enormandeau) in
 [Louis Bernatchez](http://www.bio.ulaval.ca/louisbernatchez/presentation.htm)'s
-laboratory.
-
-**GAWN** is based on initial suggestions and code from
+laboratory and based on initial suggestions and code from
 [Jérémy Le Luyer](https://github.com/jleluyer).
 
 See license information at the end of this file.
@@ -20,11 +18,10 @@ This documentation file can be
 
 **GAWN** is a genome annotation pipeline that uses an assembled transcriptome,
 either from the same or a related species, to create evidence-based annotation.
-Its primary goal is to provide good enough genome annotation rapidly.
-
-**GAWN** annotates the transcriptome using Swissprot, maps it on the genome
-with GMAP, and adds UTR-3 and UTR-5 annotations with TransDecoder and
-Cufflinks. The result files are:
+Its primary goal is to provide good enough genome annotation rapidly. It
+annotates the transcriptome using Swissprot, maps it on the genome with GMAP,
+and adds UTR-3 and UTR-5 annotations with TransDecoder and Cufflinks. The
+result files are:
 
 - A GFF3 annotation file
 - A transcript annotation CSV table
@@ -34,11 +31,11 @@ The CSV tables are formatted to maximize usability by non-specialized users.
 
 ## Use cases
 
-The approach implemented in **GAWN** is especially useful to annotate genomes
-of species for which there is a good assembled transcriptome. **GAWN** will
-also work when a good transcriptome is available for a related species. It
-provides only gene annotations for available transcripts then adds UTR regions.
-As such, it does not depend on *ab initio* gene prediction models.
+This approach is especially useful to annotate genomes of species for which
+there is a good assembled transcriptome. It will also work when a good
+transcriptome is available for a related species. It provides only gene
+annotations for available transcripts then adds UTR regions.  As such, it does
+not depend on *ab initio* gene prediction models.
 
 ## Overview of the analyses
 
@@ -73,7 +70,7 @@ The relevant TransDecoder scripts are included with their license in
 
 ## Running the pipeline
 
-For each new project, get a new copy of the **GAWN** repository from the
+For each new project, get a new copy of the project's repository from the
 sources listed in the **Installation** section and copy your data in the
 `03_data` folder.
 
