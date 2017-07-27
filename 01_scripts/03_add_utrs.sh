@@ -8,39 +8,42 @@ TRANSCRIPTOME_NAME=$2
 DATA_FOLDER=03_data
 ANNOTATION_FOLDER=04_annotation
 TRANSDECODER_FOLDER="./01_scripts/TransDecoder"
+BASENAME="$ANNOTATION_FOLDER"/"${GENOME_NAME%.fasta}"
 
 # Create GTF file from GFF3
 echo GAWN: Create GTF file from GFF3
-gffread "$ANNOTATION_FOLDER"/"${GENOME_NAME%.fasta}".gff3 -T -o "$ANNOTATION_FOLDER"/"${GENOME_NAME%.fasta}".gtf
+gffread "$BASENAME".gff3 -T -o "$BASENAME".gtf
 
 # Create genome based transcriptome
 echo GAWN: Create genome based transcriptome
 #"$UTIL_FOLDER"/cufflinks_gtf_genome_to_cdna_fasta.pl \
 "$TRANSDECODER_FOLDER"/util/cufflinks_gtf_genome_to_cdna_fasta.pl \
-    "$ANNOTATION_FOLDER"/"${GENOME_NAME%.fasta}".gtf \
+    "$BASENAME".gtf \
     "$DATA_FOLDER"/"$GENOME_NAME" \
-    > "$ANNOTATION_FOLDER"/"${GENOME_NAME%.fasta}".cdna
+    > "$BASENAME".cdna
 
 # GTF to predicted GFF3
 echo GAWN: GTF to predicted GFF3
 "$TRANSDECODER_FOLDER"/util/cufflinks_gtf_to_alignment_gff3.pl \
-    "$ANNOTATION_FOLDER"/"${GENOME_NAME%.fasta}".gtf \
-    > "$ANNOTATION_FOLDER"/"${GENOME_NAME%.fasta}".predicted.gff3
+    "$BASENAME".gtf \
+    > "$BASENAME".predicted.gff3
 
 # Best ORF candidate
 echo GAWN: Best ORF candidate
 "$TRANSDECODER_FOLDER"/TransDecoder.LongOrfs -t \
-    "$ANNOTATION_FOLDER"/"${GENOME_NAME%.fasta}".cdna
+    "$BASENAME".cdna
 
 # Move transdecoder_dir
 echo GAWN: Move transdecoder_dir
-mv "${GENOME_NAME%.fasta}".cdna.transdecoder_dir "$ANNOTATION_FOLDER"/"${GENOME_NAME%.fasta}".transdecoder_dir
-#rm -r "$ANNOTATION_FOLDER"/"$TRANSCRIPTOME_NAME".transdecoder_dir
-
+rm -r "$BASENAME".cdna.transdecoder_dir 2>/dev/null
+mv "${GENOME_NAME%.fasta}".cdna.transdecoder_dir "$BASENAME".cdna.transdecoder_dir
 
 # Genome based coding region annotation file
 echo GAWN: Genome based coding region annotation file
 "$TRANSDECODER_FOLDER"/util/cdna_alignment_orf_to_genome_orf.pl \
-    "$ANNOTATION_FOLDER"/"${GENOME_NAME%.fasta}".transdecoder_dir/longest_orfs.gff3 \
-    "$ANNOTATION_FOLDER"/"${GENOME_NAME%.fasta}".predicted.gff3 \
-    "$ANNOTATION_FOLDER"/"${GENOME_NAME%.fasta}".cdna > "$ANNOTATION_FOLDER"/transcripts.transdecoder.genome.gff3
+    "$BASENAME".cdna.transdecoder_dir/longest_orfs.gff3 \
+    "$BASENAME".predicted.gff3 \
+    "$BASENAME".cdna > "$BASENAME".gawn_annotated.gff3
+
+# Copy result to 05_results
+cp "$BASENAME".gawn_annotated.gff3 05_results
