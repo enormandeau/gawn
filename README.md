@@ -58,12 +58,18 @@ recommended to use the latest version or at least version 1.3.
 
 ## Dependencies
 
-You will also need to have the following programs installed on your computer.
+You will also need to have the following programs installed on your computer. The
+version numbers are the ones that have been tested. It is suggested that you use
+these or more recent versions.
 
 - OSX or GNU Linux
 - bash 4+
 - python 2.7+ (TODO or 3.5+)
 - cufflinks v2.2.1+
+- wget 1.17.1
+- gnu parallel 2017xxxx+
+- blastplus utilities (blastx) 2.3.0+
+- a local copy of the swissprot database
 
 The relevant TransDecoder scripts are included with their license in
 `01_scripts/TransDecoder`.
