@@ -108,12 +108,12 @@ TODO: Description...
 # TODO
 
 ### WARNING: Not yet available
-A test dataset and corresponding `primers.csv` file is available as a
+A test dataset is available as a
 [sister repository on GitHub](https://github.com/enormandeau/gawn_test_dataset).
-Download the repository and then move the data in **GAWN**'s `04_data` folder
-and the `primers.csv` file in the `02_info` folder. Follow the normal pipeline
-procedure (including database preparation) to analyse this small dataset. It
-should run in one to ten minutes depending on your computer.
+
+Download the repository and then move the data in **GAWN**'s `03_data` folder.
+Follow the normal pipeline procedure to analyse this small dataset. It should
+run in one to ten minutes depending on your computer.
 
 ## License
 
