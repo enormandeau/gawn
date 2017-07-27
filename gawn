@@ -1,0 +1,79 @@
+#!/bin/bash
+# Run full GAWN pipeline
+
+# Copy script and config files as they were run
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+SCRIPT=$0
+SCRIPT_NAME=$(basename "$SCRIPT")
+CONFIG_FILE=$1
+CONFIG_FILENAME=$(basename "$CONFIG_FILE")
+LOG_FOLDER="00_archive/log_files"
+
+print_logo () {
+    echo " ----------------------------------------- "
+    echo "GAWN - Genome Annotation Without Nightmares"
+    echo " ----------------------------------------- "
+    echo
+}
+
+print_begin () {
+    echo " _______________________________________________________________________"
+    echo "/                                                                       \\"
+    echo "| $1"
+    echo "| --------------------------------------------------------------------- |"
+}
+
+print_finished () {
+    echo "|                                                                       |"
+    echo "\\_______________________________________________________________________/"
+    echo
+}
+
+print_logo
+echo $CONFIG_FILE
+
+# Import config file and keep copy in 00_archive/log_files
+if [ -e "$CONFIG_FILE" -a -s "$CONFIG_FILE" ]
+then
+    source "$CONFIG_FILE"
+    cp "$CONFIG_FILE" "$LOG_FOLDER"/"$TIMESTAMP"_"$CONFIG_FILENAME"
+    #cp 02_info/primers.csv "$LOG_FOLDER"/"$TIMESTAMP"_primers.csv
+
+else
+    echo -e "\nGAWN: Config file does not exist or is empty."
+    echo -e "        Please specify a valid config file."
+    exit 1
+fi
+
+# TODO Confirm dependencies are installed # GMAP # Transdecoder # Cufflinks # Others?
+
+# Index genome
+if [ "$SKIP_GENOME_INDEXING" == "0" ]
+then
+    print_begin "\nGAWN: Indexing genome"
+    ./01_scripts/01_index_genome.sh $GENOME_NAME
+    print_finished
+
+
+elif [ "$SKIP_GENOME_INDEXING" == "1" ]
+then
+    echo -e "\nGAWN: Skipping genome indexing"
+
+else
+    echo -e "\nWARNING: Invalid value in config file for SKIP_GENOME_INDEXING"
+    exit 1
+fi
+
+# Annotate genome with GMAP
+print_begin "GAWN: Annotating genome with transcriptome"
+    ./01_scripts/02_annotate_genome.sh "$GENOME_NAME" "$TRANSCRIPTOME_NAME" "$NCPUS"
+print_finished
+
+# Add UTR-3 and UTR-5 regions ->   GFF3 result file
+print_begin "GAWN: Adding UTR-3 and UTR-5 regions"
+    ./01_scripts/03_add_utrs.sh "$GENOME_NAME" "$TRANSCRIPTOME_NAME"
+print_finished
+
+# TODO Annotate transcriptome ->        transcriptome annotation CSV
+
+# TODO Annotate genome ->               genome annotation CSV
