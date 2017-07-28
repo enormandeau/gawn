@@ -13,7 +13,7 @@ laboratory with suggestions and important code contributions from
 either from the same species or from a related species, to create an
 evidence-based genome annotation. Its primary goal is to provide good enough
 genome annotation at a fraction of the time and effort required to run
-traditional genome annotation pipelines.
+traditional genome annotation pipelines. The result files are:
 
 - A GFF3 annotation file
 - A transcript annotation CSV table
@@ -46,8 +46,7 @@ To use **GAWN**, you will need a local copy of its repository, which can be
 [found here](https://github.com/enormandeau/gawn/archive/master.zip).
 
 Different releases can be
-[accessed here](https://github.com/enormandeau/gawn/releases). It is
-recommended to use the latest version or at least version 1.3.
+[accessed here](https://github.com/enormandeau/gawn/releases).
 
 ## Dependencies
 
@@ -55,7 +54,7 @@ You will also need to have the following programs installed on your computer. Th
 version numbers are the ones that have been tested. It is suggested that you use
 these or more recent versions.
 
-- OSX or GNU Linux
+- GNU Linux or OSX
 - bash 4+
 - python 2.7+ (TODO or 3.5+)
 - cufflinks v2.2.1+
