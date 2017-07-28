@@ -74,12 +74,19 @@ print_begin "GAWN: Adding UTR-3 and UTR-5 regions"
     ./01_scripts/03_add_utrs.sh "$GENOME_NAME" "$TRANSCRIPTOME_NAME"
 print_finished
 
-# Annotate transcriptome -> transcriptome annotation CSV
+# Create transcriptome annotation table (.csv)
 print_begin "GAWN: Annotating transcriptome with swissprot"
     ./01_scripts/04_blast_transcriptome_on_swissprot.sh "$TRANSCRIPTOME_NAME" "$SWISSPROT_DB" "$NCPUS"
     ./01_scripts/05_get_uniprot_info.sh "$TRANSCRIPTOME_NAME"
     ./01_scripts/06_annotate_transcriptome.py 03_data/"$TRANSCRIPTOME_NAME" \
-        04_annotation/genbank_info 04_annotation/"${TRANSCRIPTOME_NAME%.fasta}_annotation.csv"
+        04_annotation/genbank_info 05_results/"${TRANSCRIPTOME_NAME%.fasta}_annotation_table.csv"
 print_finished
 
-# TODO Annotate genome -> genome annotation CSV
+# Create genome annotation table (.csv)
+print_begin "GAWN: Annotating transcriptome with swissprot"
+    ./01_scripts/07_create_genome_annotation_table.py \
+        03_data/"$GENOME_NAME" \
+        05_results/"${GENOME_NAME%.fasta}".gawn_annotated.gff3 \
+        05_results/"${TRANSCRIPTOME_NAME%.fasta}"_annotation_table.csv \
+        05_results/"${GENOME_NAME%.fasta}"_annotation_table.csv
+print_finished
