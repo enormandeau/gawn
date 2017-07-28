@@ -1,7 +1,6 @@
 # TODO
 
 ## Bugs
-- Genome annotation fails with sfontinalis genome
 
 ## Features
 - Change gene names in GFF3 from ORF to actual gene names from swissprot
