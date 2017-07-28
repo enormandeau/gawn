@@ -11,10 +11,9 @@ laboratory with suggestions and important code contributions from
 
 **GAWN** is a genome annotation pipeline that uses an assembled transcriptome,
 either from the same species or from a related species, to create an
-evidence-based genome annotation. Its primary goal is to rapidly provide good
-enough genome annotation. It annotates the transcriptome using Swissprot, maps
-it on the genome with GMAP, and adds UTR-3 and UTR-5 annotations with
-TransDecoder and Cufflinks. The result files are:
+evidence-based genome annotation. Its primary goal is to provide good enough
+genome annotation at a fraction of the time and effort required to run
+traditional genome annotation pipelines.
 
 - A GFF3 annotation file
 - A transcript annotation CSV table
