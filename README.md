@@ -7,13 +7,6 @@ Developed by [Eric Normandeau](https://github.com/enormandeau) in
 laboratory with suggestions and important code contributions from
 [Jérémy Le Luyer](https://github.com/jleluyer).
 
-See license information at the end of this file.
-
-## Documentation
-
-This documentation file can be
-[found here](https://github.com/enormandeau/gawn/blob/master/README.md).
-
 ## Description
 
 **GAWN** is a genome annotation pipeline that uses an assembled transcriptome,
@@ -73,7 +66,7 @@ these or more recent versions.
 - a local copy of the swissprot database
 
 ## Installing the depencencies
-# TODO
+### TODO
 
 The relevant TransDecoder scripts are included with their license in
 `01_scripts/TransDecoder`.
@@ -104,7 +97,7 @@ folder.
 - A genome annotation csv table
 
 ## Test dataset
-# TODO
+### TODO
 
 ### WARNING: Not yet available
 A test dataset is available as a
