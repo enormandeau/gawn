@@ -1,10 +1,10 @@
-# GAWN v0.1
+# GAWN v0.2
 
 ## Genome Annotation Without Nightmares
 
 Developed by [Eric Normandeau](https://github.com/enormandeau) in
 [Louis Bernatchez](http://www.bio.ulaval.ca/louisbernatchez/presentation.htm)'s
-laboratory with initial suggestions and code from
+laboratory with suggestions and important code contributions from
 [Jérémy Le Luyer](https://github.com/jleluyer).
 
 See license information at the end of this file.
@@ -17,15 +17,15 @@ This documentation file can be
 ## Description
 
 **GAWN** is a genome annotation pipeline that uses an assembled transcriptome,
-either from the same or a related species, to create evidence-based annotation.
-Its primary goal is to provide good enough genome annotation rapidly. It
-annotates the transcriptome using Swissprot, maps it on the genome with GMAP,
-and adds UTR-3 and UTR-5 annotations with TransDecoder and Cufflinks. The
-result files are:
+either from the same species or from a related species, to create an
+evidence-based genome annotation. Its primary goal is to rapidly provide good
+enough genome annotation. It annotates the transcriptome using Swissprot, maps
+it on the genome with GMAP, and adds UTR-3 and UTR-5 annotations with
+TransDecoder and Cufflinks. The result files are:
 
 - A GFF3 annotation file
 - A transcript annotation CSV table
-- A genome annotation CSV table.
+- A genome annotation CSV table
 
 The CSV tables are formatted to maximize usability by non-specialized users.
 
@@ -34,7 +34,7 @@ The CSV tables are formatted to maximize usability by non-specialized users.
 This approach is especially useful to annotate genomes of species for which
 there is a good assembled transcriptome. It will also work when a good
 transcriptome is available for a related species. It provides only gene
-annotations for available transcripts then adds UTR regions.  As such, it does
+annotations for available transcripts then adds UTR regions. As such, it does
 not depend on *ab initio* gene prediction models.
 
 ## Overview of the analyses
@@ -44,8 +44,9 @@ During the analyses, the following steps are performed:
 - Index the genome (`GMAP`)
 - Annotate genes using available transcripts (`GMAP`)
 - Add 3' and 5' UTR regions (`cufflinks` and `TransDecoder`)
-- TODO: Produce transcriptome annotation table (Python script)
-- TODO: Produce genome annotation table (Python script)
+- Annotate the transcripts (`blastx` and the Swissprot database)
+- Produce a transcriptome annotation table (Python script)
+- Produce a genome annotation table (Python script)
 
 ## Installation
 
@@ -71,6 +72,9 @@ these or more recent versions.
 - blastplus utilities (blastx) 2.3.0+
 - a local copy of the swissprot database
 
+## Installing the depencencies
+# TODO
+
 The relevant TransDecoder scripts are included with their license in
 `01_scripts/TransDecoder`.
 
@@ -95,20 +99,9 @@ sources listed in the **Installation** section and copy your data in the
 Once the pipeline has completed, all result files are found in the `05_results`
 folder.
 
-### GFF3
-TODO: Description...
-
-- `asdf.gff3`
-
-### Transcriptome table
-TODO: Description...
-
-- `asdf.csv`
-
-### Genome table
-TODO: Description...
-
-- `asdf.csv`
+- A valid gff3 annotation file
+- A transcriptome annotation csv table
+- A genome annotation csv table
 
 ## Test dataset
 # TODO
