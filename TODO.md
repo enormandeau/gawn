@@ -6,6 +6,7 @@
 - Carry the e-values into the transcriptome and genome annotation tables
 - Add CpG annotation (scripts in `01_scripts/future`)
 - Change gene names in GFF3 from ORF to actual gene names from swissprot
+- Use usearch instead of blastx
 
 ## Documentation
 

@@ -51,11 +51,11 @@ example requirements for three different eukaryote genomes. The annotation was
 run on a Lenovo ThinkStation D20 with 8 Xeon CPUs (16 threads, 2.40GHz) on
 Linux Mint 17 (Ubuntu 16.04).
 
-| Genome                    | RAM   | Disc space    | Time  |
-|---------------------------|-------|---------------|-------|
-| Human genome              | XXGo  | XXGo          | XXh   |
-| *Danio rerio*             | XXGo  | XXGo          | XXh   |
-| *Drosophila melanogaster* | XXGo  | XXGo          | XXh   |
+| Genome                    | Size (Gb) | RAM   | Max disc space    | Time  |
+|---------------------------|-----------|-------|-------------------|-------|
+| Human genome              | 3.29      | 16Go  | 37Go              | XXh   |
+| *Danio rerio*             | 1.70      | XXGo  | XXGo              | XXh   |
+| *Drosophila melanogaster* | 1.45      | XXGo  | 10Go              | XXh   |
 
 ## Installation
 
