@@ -63,7 +63,7 @@ class Info(object):
             pass
 
     def __repr__(self):
-        return "\t".join([self.sequence_name,
+        return ",".join([self.sequence_name,
             self.accession,
             self.fullname,
             self.altnames,
@@ -103,7 +103,7 @@ except:
 sequences = fasta_iterator(sequence_file)
 
 with open(output_file, "w") as ofile:
-    ofile.write("\t".join(["Name", "Accession", "Fullname", "Altnames", "Pfam", "GO"]) + "\n")
+    ofile.write(",".join(["Name", "Accession", "Fullname", "Altnames", "Pfam", "GO"]) + "\n")
     for s in sequences:
         name = s.name.split(" ")[0]
         info_file = os.path.join(annotation_folder, name + ".info")

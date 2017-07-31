@@ -66,7 +66,7 @@ with open(genome_gff3) as infile:
 with open(transcriptome_table) as infile:
     for line in infile:
         if not line.startswith("Name"):
-            l = line.strip().split("\t")
+            l = line.strip().split(",")
             transcript_name = l[0]
 
             try:
@@ -108,7 +108,7 @@ for transcript in sorted(transcripts):
 genes = sorted(genes)
 
 with open(genome_table, "w") as outfile:
-    outfile.write("\t".join([
+    outfile.write(",".join([
         "scaffold_name",
         "from_position",
         "to_position",
@@ -123,4 +123,4 @@ with open(genome_table, "w") as outfile:
         ]) + "\n")
 
     for g in genes:
-        outfile.write("\t".join([str(x) for x in g]) + "\n")
+        outfile.write(",".join([str(x) for x in g]) + "\n")
