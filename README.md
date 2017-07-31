@@ -8,12 +8,15 @@ laboratory with suggestions and important code contributions from
 [Jérémy Le Luyer](https://github.com/jleluyer).
 
 ## Description
+existing tools (e.g.: GMAP, TransDecoder, blastx, the Swissprot database, etc.) and an
 
-**GAWN** is a genome annotation pipeline that uses an assembled transcriptome,
+**GAWN** is a genome annotation pipeline that uses  assembled transcriptome,
 either from the same species or from a related species, to create an
 evidence-based genome annotation. Its primary goal is to provide good enough
 genome annotation at a fraction of the time and effort required to run
-traditional genome annotation pipelines. The result files are:
+traditional genome annotation pipelines. It uses existing tools, such as GMAP,
+TransDecoder, blastx, the Swissprot database, etc. to produce the annotation.
+The result files are:
 
 - A GFF3 annotation file
 - A transcript annotation CSV table
@@ -62,6 +65,20 @@ these or more recent versions.
 - gnu parallel 2017xxxx+
 - blastplus utilities (blastx) 2.3.0+
 - a local copy of the swissprot database
+
+## Ressources needed
+
+**GAWN** depends on different tools to annotate genomes. The requirements in
+terms of RAM, disk space, and time, is dependent on these tools. Here are
+example requirements for three different eukaryote genomes. The annotation was
+run on a Lenovo ThinkStation D20 with 8 Xeon CPUs (16 threads, 2.40GHz) on
+Linux Mint 17 (Ubuntu 16.04).
+
+| Genome                    | RAM   | Disc space    | Time  |
+|---------------------------|-------|---------------|-------|
+| Human genome              | XXGo  | XXGo          | XXh   |
+| *Danio rerio*             | XXGo  | XXGo          | XXh   |
+| *Drosophila melanogaster* | XXGo  | XXGo          | XXh   |
 
 ## Installing the depencencies
 ### TODO
