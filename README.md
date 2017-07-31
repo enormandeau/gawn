@@ -43,6 +43,20 @@ During the analyses, the following steps are performed:
 - Produce a transcriptome annotation table (Python script)
 - Produce a genome annotation table (Python script)
 
+## Ressources needed
+
+**GAWN** depends on different tools to annotate genomes. The requirements in
+terms of RAM, disk space, and time, is dependent on these tools. Here are
+example requirements for three different eukaryote genomes. The annotation was
+run on a Lenovo ThinkStation D20 with 8 Xeon CPUs (16 threads, 2.40GHz) on
+Linux Mint 17 (Ubuntu 16.04).
+
+| Genome                    | RAM   | Disc space    | Time  |
+|---------------------------|-------|---------------|-------|
+| Human genome              | XXGo  | XXGo          | XXh   |
+| *Danio rerio*             | XXGo  | XXGo          | XXh   |
+| *Drosophila melanogaster* | XXGo  | XXGo          | XXh   |
+
 ## Installation
 
 To use **GAWN**, you will need a local copy of its repository, which can be
@@ -65,20 +79,6 @@ these or more recent versions.
 - gnu parallel 2017xxxx+
 - blastplus utilities (blastx) 2.3.0+
 - a local copy of the swissprot database
-
-## Ressources needed
-
-**GAWN** depends on different tools to annotate genomes. The requirements in
-terms of RAM, disk space, and time, is dependent on these tools. Here are
-example requirements for three different eukaryote genomes. The annotation was
-run on a Lenovo ThinkStation D20 with 8 Xeon CPUs (16 threads, 2.40GHz) on
-Linux Mint 17 (Ubuntu 16.04).
-
-| Genome                    | RAM   | Disc space    | Time  |
-|---------------------------|-------|---------------|-------|
-| Human genome              | XXGo  | XXGo          | XXh   |
-| *Danio rerio*             | XXGo  | XXGo          | XXh   |
-| *Drosophila melanogaster* | XXGo  | XXGo          | XXh   |
 
 ## Installing the depencencies
 ### TODO
