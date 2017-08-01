@@ -8,9 +8,8 @@ laboratory with suggestions and important code contributions from
 [Jérémy Le Luyer](https://github.com/jleluyer).
 
 ## Description
-existing tools (e.g.: GMAP, TransDecoder, blastx, the Swissprot database, etc.) and an
 
-**GAWN** is a genome annotation pipeline that uses  assembled transcriptome,
+**GAWN** is a genome annotation pipeline that uses assembled transcriptome,
 either from the same species or from a related species, to create an
 evidence-based genome annotation. Its primary goal is to provide good enough
 genome annotation at a fraction of the time and effort required to run
@@ -19,10 +18,10 @@ TransDecoder, blastx, the Swissprot database, etc. to produce the annotation.
 The result files are:
 
 - A GFF3 annotation file
-- A transcript annotation CSV table
-- A genome annotation CSV table
+- A transcript annotation .tsv table
+- A genome annotation .tsv table
 
-The CSV tables are formatted to maximize usability by non-specialized users.
+The .tsv tables are formatted to maximize usability by non-specialized users.
 
 ## Use cases
 
@@ -42,6 +41,7 @@ During the analyses, the following steps are performed:
 - Annotate the transcripts (`blastx` and the Swissprot database)
 - Produce a transcriptome annotation table (Python script)
 - Produce a genome annotation table (Python script)
+- TODO: add CpG island annotations
 
 ## Ressources needed
 
@@ -92,7 +92,7 @@ For each new project, get a new copy of the project's repository from the
 sources listed in the **Installation** section and copy your data in the
 `03_data` folder.
 
-- Install dependencies if needed
+- Install dependencies
 - Download **GAWN** (see **Installation** section above)
 - Put your genome and transcriptome fasta files (uncompressed) in `03_data`
 - Make a copy of `02_info/gawn_config.sh` and edit the parameters
@@ -108,8 +108,8 @@ Once the pipeline has completed, all result files are found in the `05_results`
 folder.
 
 - A valid gff3 annotation file
-- A transcriptome annotation csv table
-- A genome annotation csv table
+- A transcriptome annotation .tsv table
+- A genome annotation .tsv table
 
 ## Test dataset
 ### TODO
