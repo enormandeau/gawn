@@ -75,12 +75,18 @@ with open(transcriptome_table) as infile:
                 gene_altnames = l[3]
                 gene_pfam = l[4]
                 gene_go = l[5]
+                gene_C = l[6]
+                gene_F = l[7]
+                gene_P = l[8]
             except:
                 gene_accession = "na"
                 gene_name = "na"
                 gene_altnames = "na"
                 gene_pfam = "na"
                 gene_go = "na"
+                gene_C = "na"
+                gene_F = "na"
+                gene_P = "na"
 
             for path in transcripts[transcript_name]:
                 transcripts[transcript_name][path] += [
@@ -88,18 +94,16 @@ with open(transcriptome_table) as infile:
                         gene_name,
                         gene_altnames,
                         gene_pfam,
-                        gene_go
+                        gene_go,
+                        gene_C,
+                        gene_F,
+                        gene_P
                         ]
-
-# TODO
-# Re-arrange genes by scaffold and position
 
 # Write genome annotation tables
 # If scaffold has no gene, put a line for this
 # if scaffold has multiple genes, output them sorted by start position
 # For each gene, give transcript and its annotation if available
-
-
 genes = []
 for transcript in sorted(transcripts):
     for path in transcripts[transcript]:
@@ -109,17 +113,20 @@ genes = sorted(genes)
 
 with open(genome_table, "w") as outfile:
     outfile.write("\t".join([
-        "scaffold_name",
-        "from_position",
-        "to_position",
-        "sense",
-        "transcript_name",
-        "transcript_path",
-        "gene_accession",
-        "gene_name",
-        "gene_altnames",
-        "gene_pfam",
-        "gene_go"
+        "ScaffoldName",
+        "FromPosition",
+        "ToPosition",
+        "Sense",
+        "TranscriptName",
+        "TranscriptPath",
+        "GeneAccession",
+        "GeneName",
+        "GeneAltNames",
+        "GenePfam",
+        "GeneGo",
+        "CellularComponent",
+        "MolecularFunction",
+        "BiologicalProcess"
         ]) + "\n")
 
     for g in genes:
