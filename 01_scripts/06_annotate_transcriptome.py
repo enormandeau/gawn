@@ -28,8 +28,11 @@ class Info(object):
         self.accession = ""
         self.fullname  = ""
         self.altnames  = ""
-        self.go        = ""
-        self.pfam      = ""
+        self.pfam      = " "
+        self.go        = " "
+        self.goC       = " "
+        self.goF       = " "
+        self.goP       = " "
 
         def get_info(line):
             l = line.strip()[5:]
@@ -53,8 +56,16 @@ class Info(object):
                         self.altnames += l
                     elif line.startswith("DR   GO;"):
                         l = line.replace("DR   GO;", "").strip()
-                        l = l.split(";")[0]
-                        self.go += l + ";"
+                        l1 = l.split(";")[0]
+                        l2 = l.split(";")[1]
+                        self.go += l1 + ";"
+                        if "C:" in l2:
+                            self.goC += l2 + ";"
+                        if "F:" in l2:
+                            self.goF += l2 + ";"
+                        if "P:" in l2:
+                            self.goP += l2 + ";"
+
                     elif line.startswith("DR   Pfam;"):
                         l = line.replace("DR   Pfam;", "").strip()
                         l = l.split(";")[0]
@@ -68,7 +79,10 @@ class Info(object):
             self.fullname,
             self.altnames,
             self.pfam,
-            self.go])
+            self.go,
+            self.goC,
+            self.goF,
+            self.goP])
 
 # Functions
 def fasta_iterator(input_file):
@@ -103,7 +117,7 @@ except:
 sequences = fasta_iterator(sequence_file)
 
 with open(output_file, "w") as ofile:
-    ofile.write(",".join(["Name", "Accession", "Fullname", "Altnames", "Pfam", "GO"]) + "\n")
+    ofile.write(",".join(["Name", "Accession", "Fullname", "Altnames", "Pfam", "GO", "CellularComponent", "Molecular Function", "Biological Process"]) + "\n")
     for s in sequences:
         name = s.name.split(" ")[0]
         info_file = os.path.join(annotation_folder, name + ".info")
