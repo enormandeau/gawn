@@ -37,7 +37,6 @@ if [ -e "$CONFIG_FILE" -a -s "$CONFIG_FILE" ]
 then
     source "$CONFIG_FILE"
     cp "$CONFIG_FILE" "$LOG_FOLDER"/"$TIMESTAMP"_"$CONFIG_FILENAME"
-    #cp 02_info/primers.csv "$LOG_FOLDER"/"$TIMESTAMP"_primers.csv
 
 else
     echo -e "\nGAWN: Config file does not exist or is empty."
@@ -74,19 +73,19 @@ print_begin "GAWN: Adding UTR-3 and UTR-5 regions"
     ./01_scripts/03_add_utrs.sh "$GENOME_NAME" "$TRANSCRIPTOME_NAME"
 print_finished
 
-# Create transcriptome annotation table (.csv)
+# Create transcriptome annotation table (.tsv)
 print_begin "GAWN: Annotating transcriptome with swissprot"
     ./01_scripts/04_blast_transcriptome_on_swissprot.sh "$TRANSCRIPTOME_NAME" "$SWISSPROT_DB" "$NCPUS"
     ./01_scripts/05_get_uniprot_info.sh "$TRANSCRIPTOME_NAME"
     ./01_scripts/06_annotate_transcriptome.py 03_data/"$TRANSCRIPTOME_NAME" \
-        04_annotation/genbank_info 05_results/"${TRANSCRIPTOME_NAME%.fasta}_annotation_table.csv"
+        04_annotation/genbank_info 05_results/"${TRANSCRIPTOME_NAME%.fasta}_annotation_table.tsv"
 print_finished
 
-# Create genome annotation table (.csv)
+# Create genome annotation table (.tsv)
 print_begin "GAWN: Annotating transcriptome with swissprot"
     ./01_scripts/07_create_genome_annotation_table.py \
         03_data/"$GENOME_NAME" \
         05_results/"${GENOME_NAME%.fasta}".gawn_annotated.gff3 \
-        05_results/"${TRANSCRIPTOME_NAME%.fasta}"_annotation_table.csv \
-        05_results/"${GENOME_NAME%.fasta}"_annotation_table.csv
+        05_results/"${TRANSCRIPTOME_NAME%.fasta}"_annotation_table.tsv \
+        05_results/"${GENOME_NAME%.fasta}"_annotation_table.tsv
 print_finished
