@@ -49,13 +49,15 @@ During the analyses, the following steps are performed:
 terms of RAM, disk space, and time, is dependent on these tools. Here are
 example requirements for three different eukaryote genomes. The annotation was
 run on a Lenovo ThinkStation D20 with 8 Xeon CPUs (16 threads, 2.40GHz) on
-Linux Mint 17 (Ubuntu 16.04).
+Linux Mint 17 (Ubuntu 16.04). All of these datasets, except *Salvelinus fontinalis*
+were run using the most recent genomes and transcriptomes available from Genbank.
 
-| Genome                    | Size (Gb) | RAM       | Max disc space    | Time  |
-|---------------------------|-----------|-----------|-------------------|-------|
-| Human genome              | 3.29      | 16Go      | 37Go              | XXh   |
-| *Danio rerio*             | 1.70      | XXGo      | XXGo              | XXh   |
-| *Drosophila melanogaster* | 1.45      | 10.2Go    | 10Go              | 28h   |
+| Genome                    | Size (Gbp)| RAM (GB)  | Final disc space (GB) | Time (h)  |
+|---------------------------|-----------|-----------|-----------------------|-----------|
+| Human genome              | 3.29      | 16        | 37                    | XX        |
+| *Salvelinus fontinalis*     | 2.67      | 14.3      | 31.2                  | XX        |
+| *Danio rerio*             | 1.70      | XX        | XX                    | XX        |
+| *Drosophila melanogaster* | 1.45      | 10.2      | 3.1                   | 28        |
 
 ## Installation
 
