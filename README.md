@@ -55,7 +55,7 @@ were run using the most recent genomes and transcriptomes available from Genbank
 | Genome                    | Size (Gbp)| RAM (GB)  | Final disc space (GB) | Time (h)  |
 |---------------------------|-----------|-----------|-----------------------|-----------|
 | Human genome              | 3.29      | 16        | 37                    | XX        |
-| *Salvelinus fontinalis*     | 2.67      | 14.3      | 31.2                  | XX        |
+| *Salvelinus fontinalis*   | 2.67      | 14.3      | 31.2                  | XX        |
 | *Danio rerio*             | 1.70      | XX        | XX                    | XX        |
 | *Drosophila melanogaster* | 1.45      | 10.2      | 3.1                   | 28        |
 
