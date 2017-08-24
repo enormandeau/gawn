@@ -75,8 +75,9 @@ these or more recent versions.
 
 - GNU Linux or OSX
 - bash 4+
-- python 2.7+ (TODO or 3.5+)
+- python 2.7+
 - cufflinks v2.2.1+
+- gmap (2017-06-20)
 - wget 1.17.1
 - gnu parallel 2017xxxx+
 - blastplus utilities (blastx) 2.3.0+
