@@ -16,11 +16,13 @@ FISHER_FOLDER=06_fisher_tests
 cat "$SWISSPROT_HITS" |
     while read i
     do
-        feature=$(echo $i | cut -d " " -f 1) hit=$(echo $i | cut -d "|" -f 4 | cut -d "." -f 1)
+        echo $i
+        feature=$(echo $i | cut -d " " -f 1)
+        hit=$(echo $i | cut -d "|" -f 4 | cut -d "." -f 1)
         echo "wget -q -O - http://www.uniprot.org/uniprot/${hit}.txt > $INFO_FOLDER/${feature}.info"
     done > wget_genbank_commands.txt
 
-# Create info folder
+## Create info folder
 rm -r "$INFO_FOLDER" 2>/dev/null
 mkdir "$INFO_FOLDER"
 
