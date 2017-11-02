@@ -1,5 +1,13 @@
 # GAWN v0.2
 
+# WARNING!
+
+GAWN 0.2 is pretty unstable right now with regards to what tool versions you
+are using.
+
+I am working on it (https://github.com/enormandeau/gawn/issues/5) and will
+update the dependency specifications.
+
 ## Genome Annotation Without Nightmares
 
 Developed by [Eric Normandeau](https://github.com/enormandeau) in
