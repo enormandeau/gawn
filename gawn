@@ -10,9 +10,9 @@ CONFIG_FILENAME=$(basename "$CONFIG_FILE")
 LOG_FOLDER="00_archive/log_files"
 
 print_logo () {
-    echo " ----------------------------------------- "
-    echo "GAWN - Genome Annotation Without Nightmares"
-    echo " ----------------------------------------- "
+    echo " ---------------------------------------------- "
+    echo "GAWN v0.3 - Genome Annotation Without Nightmares"
+    echo " ---------------------------------------------- "
     echo
 }
 
@@ -66,12 +66,13 @@ fi
 # Annotate genome with GMAP
 print_begin "GAWN: Annotating genome with transcriptome"
     ./01_scripts/02_annotate_genome.sh "$GENOME_NAME" "$TRANSCRIPTOME_NAME" "$NCPUS"
+    cp 04_annotation/"${GENOME_NAME%.fasta}".gff3 05_results
 print_finished
 
 # Add UTR-3 and UTR-5 regions ->   GFF3 result file
-print_begin "GAWN: Adding UTR-3 and UTR-5 regions"
-    ./01_scripts/03_add_utrs.sh "$GENOME_NAME" "$TRANSCRIPTOME_NAME"
-print_finished
+#print_begin "GAWN: Adding UTR-3 and UTR-5 regions"
+#    ./01_scripts/03_add_utrs.sh "$GENOME_NAME" "$TRANSCRIPTOME_NAME"
+#print_finished
 
 # Create transcriptome annotation table (.tsv)
 print_begin "GAWN: Annotating transcriptome with swissprot"
@@ -85,7 +86,7 @@ print_finished
 print_begin "GAWN: Annotating transcriptome with swissprot"
     ./01_scripts/07_create_genome_annotation_table.py \
         03_data/"$GENOME_NAME" \
-        05_results/"${GENOME_NAME%.fasta}".gawn_annotated.gff3 \
+        04_annotation/"${GENOME_NAME%.fasta}".gff3 \
         05_results/"${TRANSCRIPTOME_NAME%.fasta}"_annotation_table.tsv \
         05_results/"${GENOME_NAME%.fasta}"_annotation_table.tsv
 print_finished

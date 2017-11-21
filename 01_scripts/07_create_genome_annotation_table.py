@@ -23,7 +23,7 @@ try:
     transcriptome_table = sys.argv[3]
     genome_table = sys.argv[4]
 except:
-    print __doc__
+    print(__doc__)
     sys.exit(1)
 
 # Read genome fasta file to keep track of scaffolds

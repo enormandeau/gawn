@@ -16,9 +16,13 @@ class Fasta(object):
     def __init__(self, name, sequence):
         self.name = name
         self.sequence = sequence
+
     def write_to_file(self, handle):
         handle.write(">" + self.name + "\n")
         handle.write(self.sequence + "\n")
+
+    def __repr__(self):
+        return f">{self.name}\n{self.sequence[0:61]}"
 
 class Info(object):
     """Uniprot informations about a sequence
@@ -110,7 +114,7 @@ try:
     annotation_folder = sys.argv[2]
     output_file = sys.argv[3]
 except:
-    print __doc__
+    print(__doc__)
     sys.exit(1)
 
 # Read fasta file and get annotation
