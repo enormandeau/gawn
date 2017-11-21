@@ -1,7 +1,8 @@
-# GAWN v0.3
+# GAWN v0.3.1
 
 # WARNING!
 
+- GAWN now requires blastplus 2.7.1+
 - UTR region annotation has been turned off since v0.3
 - The dependencies (mostly versions) have been updated
 
@@ -70,7 +71,7 @@ To use **GAWN**, you will need a local copy of its repository, which can be
 
 Different releases can be
 [accessed here](https://github.com/enormandeau/gawn/releases). We suggest using
-version 0.3 or a more recent version.
+version 0.3.1 or a more recent version.
 
 ## Dependencies
 
