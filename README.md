@@ -85,7 +85,7 @@ these or more recent versions.
 - gmap (2017-10-12)
 - wget 1.17.1
 - gnu parallel 2017xxxx+
-- blastplus utilities (blastx) 2.3.0+
+- blastplus utilities (blastx) 2.7.1+
 - a local copy of the swissprot database
 
 The relevant TransDecoder scripts are included with their license in

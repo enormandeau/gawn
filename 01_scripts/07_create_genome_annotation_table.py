@@ -79,14 +79,14 @@ with open(transcriptome_table) as infile:
                 gene_F = l[7]
                 gene_P = l[8]
             except:
-                gene_accession = "na"
-                gene_name = "na"
-                gene_altnames = "na"
-                gene_pfam = "na"
-                gene_go = "na"
-                gene_C = "na"
-                gene_F = "na"
-                gene_P = "na"
+                gene_accession = "-"
+                gene_name = "-"
+                gene_altnames = "-"
+                gene_pfam = "-"
+                gene_go = "-"
+                gene_C = "-"
+                gene_F = "-"
+                gene_P = "-"
 
             for path in transcripts[transcript_name]:
                 transcripts[transcript_name][path] += [
