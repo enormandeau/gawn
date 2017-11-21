@@ -16,7 +16,6 @@ FISHER_FOLDER=06_fisher_tests
 cat "$SWISSPROT_HITS" |
     while read i
     do
-        echo $i
         feature=$(echo $i | cut -d " " -f 1)
         hit=$(echo $i | cut -d "|" -f 4 | cut -d "." -f 1)
         echo "wget -q -O - http://www.uniprot.org/uniprot/${hit}.txt > $INFO_FOLDER/${feature}.info"

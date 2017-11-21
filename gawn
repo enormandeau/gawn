@@ -44,8 +44,6 @@ else
     exit 1
 fi
 
-# TODO Confirm dependencies are installed # GMAP # Transdecoder # Cufflinks # Others?
-
 # Index genome
 if [ "$SKIP_GENOME_INDEXING" == "0" ]
 then
@@ -83,7 +81,7 @@ print_begin "GAWN: Annotating transcriptome with swissprot"
 print_finished
 
 # Create genome annotation table (.tsv)
-print_begin "GAWN: Annotating transcriptome with swissprot"
+print_begin "GAWN: Annotating genome using transcriptome"
     ./01_scripts/07_create_genome_annotation_table.py \
         03_data/"$GENOME_NAME" \
         04_annotation/"${GENOME_NAME%.fasta}".gff3 \
