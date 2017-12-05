@@ -62,7 +62,7 @@ else
 fi
 
 # Annotate genome with GMAP
-print_begin "GAWN: Annotating genome with transcriptome"
+print_begin "GAWN: Finding transcript positions on genome"
     ./01_scripts/02_annotate_genome.sh "$GENOME_NAME" "$TRANSCRIPTOME_NAME" "$NCPUS"
     cp 04_annotation/"${GENOME_NAME%.fasta}".gff3 05_results
 print_finished
