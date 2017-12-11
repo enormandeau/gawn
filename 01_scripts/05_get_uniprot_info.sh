@@ -29,4 +29,7 @@ mkdir "$INFO_FOLDER"
 cat wget_genbank_commands.txt | parallel "eval {}"
 
 ## Cleanup commands
-rm wget_genbank_commands.txt
+## Test for issue #7
+
+#rm wget_genbank_commands.txt
+head wget_genbank_commands.txt
