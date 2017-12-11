@@ -74,10 +74,16 @@ print_finished
 
 # Create transcriptome annotation table (.tsv)
 print_begin "GAWN: Annotating transcriptome with swissprot"
+    echo "      blasting transcriptome..."
     ./01_scripts/04_blast_transcriptome_on_swissprot.sh "$TRANSCRIPTOME_NAME" "$SWISSPROT_DB" "$NCPUS"
+    
+    echo "      getting uniprot infos..."
     ./01_scripts/05_get_uniprot_info.sh "$TRANSCRIPTOME_NAME"
+    
+    echo "      annotating transcriptome..."
     ./01_scripts/06_annotate_transcriptome.py 03_data/"$TRANSCRIPTOME_NAME" \
         04_annotation/genbank_info 05_results/"${TRANSCRIPTOME_NAME%.fasta}_annotation_table.tsv"
+        
 print_finished
 
 # Create genome annotation table (.tsv)
