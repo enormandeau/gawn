@@ -10,7 +10,7 @@ CONFIG_FILENAME=$(basename "$CONFIG_FILE")
 LOG_FOLDER="00_archive/log_files"
 
 # Log all output
-exec > >(tee 99_logs/gawn_annotation_"$TIMESTAMP".log) 2>&1
+exec > >(tee 99_logs/gawn_"$TIMESTAMP".log) 2>&1
 
 # Functions
 print_logo () {
@@ -74,8 +74,9 @@ then
 
 elif [ "$SKIP_GENOME_INDEXING" == "1" ]
 then
-    echo
-    echo -e "GAWN: Skipping genome indexing"
+    print_begin "GAWN: Skipping genome indexing"
+    echo "      nothing to do..."
+    print_finished ""
 
 else
     echo -e "WARNING: Invalid value in config file for SKIP_GENOME_INDEXING"
