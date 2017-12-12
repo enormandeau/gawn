@@ -16,7 +16,7 @@ exec > >(tee 99_logs/gawn_"$TIMESTAMP".log) 2>&1
 print_logo () {
     echo
     echo " ------------------------------------------------ "
-    echo "GAWN v0.3.1 - Genome Annotation Without Nightmares"
+    echo "GAWN v0.3.2 - Genome Annotation Without Nightmares"
     echo " ------------------------------------------------ "
 }
 

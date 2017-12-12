@@ -1,4 +1,4 @@
-# GAWN v0.3.1
+# GAWN v0.3.2
 
 # WARNING!
 
