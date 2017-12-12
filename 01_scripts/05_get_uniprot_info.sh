@@ -10,6 +10,7 @@ BASENAME="$ANNOTATION_FOLDER"/"${TRANSCRIPTOME_NAME%.fasta}"
 SWISSPROT_HITS="$BASENAME".hits
 INFO_FOLDER="$ANNOTATION_FOLDER"/genbank_info
 FISHER_FOLDER=06_fisher_tests
+GENBANK_COMMANDS="wget_genbank_commands.txt"
 
 # Get info from uniprot for each hit in parallel
 ## Create commands
@@ -19,17 +20,11 @@ cat "$SWISSPROT_HITS" |
         feature=$(echo $i | cut -d " " -f 1)
         hit=$(echo $i | cut -d " " -f 2 | cut -d "." -f 1)
         echo "wget -q -O - http://www.uniprot.org/uniprot/${hit}.txt > $INFO_FOLDER/${feature}.info"
-    done > wget_genbank_commands.txt
+    done > "$ANNOTATION_FOLDER"/"$GENBANK_COMMANDS"
 
 ## Create info folder
 rm -r "$INFO_FOLDER" 2>/dev/null
 mkdir "$INFO_FOLDER"
 
 ## Run commands
-cat wget_genbank_commands.txt | parallel "eval {}"
-
-## Cleanup commands
-## Test for issue #7
-
-#rm wget_genbank_commands.txt
-head wget_genbank_commands.txt
+cat "$ANNOTATION_FOLDER"/"$GENBANK_COMMANDS" | parallel "eval {}"
