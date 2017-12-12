@@ -87,7 +87,7 @@ these or more recent versions.
 - wget 1.17.1
 - gnu parallel 2017xxxx+
 - blastplus utilities (blastx) 2.7.1+
-- a local copy of the swissprot database
+- a local copy of the swissprot database (the .phr, .pin, .pnd, .pni ... files)
 
 The relevant TransDecoder scripts are included with their license in
 `01_scripts/TransDecoder`.
