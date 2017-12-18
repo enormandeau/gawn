@@ -9,28 +9,43 @@ CONFIG_FILE=$1
 CONFIG_FILENAME=$(basename "$CONFIG_FILE")
 LOG_FOLDER="00_archive/log_files"
 
+# Log all output
+exec > >(tee 99_logs/gawn_"$TIMESTAMP".log) 2>&1
+
+# Functions
 print_logo () {
-    echo " ----------------------------------------- "
-    echo "GAWN - Genome Annotation Without Nightmares"
-    echo " ----------------------------------------- "
     echo
+    echo " ------------------------------------------------ "
+    echo "GAWN v0.3.2 - Genome Annotation Without Nightmares"
+    echo " ------------------------------------------------ "
 }
 
 print_begin () {
-    echo " _______________________________________________________________________"
-    echo "/                                                                       \\"
-    echo "| $1"
-    echo "| --------------------------------------------------------------------- |"
-}
-
-print_finished () {
-    echo "|                                                                       |"
-    echo "\\_______________________________________________________________________/"
+    echo
+    echo ",########################################################,"
+    echo "#####                                                    #"
+    echo "###   $1"
+    echo "#"
     echo
 }
 
+print_finished () {
+    echo
+    echo "#"
+    echo "###   $1"
+    echo "#####                                                    #"
+    echo "'########################################################'"
+}
+
+print_end () {
+    echo
+    echo " -------------------------------"
+    echo "GAWN: Genome annotation completed"
+    echo " -------------------------------"
+}
+
+# Printing header
 print_logo
-echo $CONFIG_FILE
 
 # Import config file and keep copy in 00_archive/log_files
 if [ -e "$CONFIG_FILE" -a -s "$CONFIG_FILE" ]
@@ -38,54 +53,72 @@ then
     source "$CONFIG_FILE"
     cp "$CONFIG_FILE" "$LOG_FOLDER"/"$TIMESTAMP"_"$CONFIG_FILENAME"
 
+    # Printing config file parameters
+    print_begin "Config file:"
+    cat $CONFIG_FILE | grep -v "^ *#" | grep -v "^$"
+    print_finished "End of config file"
+
 else
-    echo -e "\nGAWN: Config file does not exist or is empty."
+    echo -e "GAWN: Config file does not exist or is empty."
     echo -e "        Please specify a valid config file."
     exit 1
 fi
 
-# TODO Confirm dependencies are installed # GMAP # Transdecoder # Cufflinks # Others?
-
 # Index genome
 if [ "$SKIP_GENOME_INDEXING" == "0" ]
 then
-    print_begin "\nGAWN: Indexing genome"
+    print_begin "GAWN: Indexing genome"
     ./01_scripts/01_index_genome.sh $GENOME_NAME
-    print_finished
+    print_finished "Finished: Indexing genome"
 
 
 elif [ "$SKIP_GENOME_INDEXING" == "1" ]
 then
-    echo -e "\nGAWN: Skipping genome indexing"
+    print_begin "GAWN: Skipping genome indexing"
+    echo "      nothing to do..."
+    print_finished ""
 
 else
-    echo -e "\nWARNING: Invalid value in config file for SKIP_GENOME_INDEXING"
+    echo -e "WARNING: Invalid value in config file for SKIP_GENOME_INDEXING"
     exit 1
 fi
 
 # Annotate genome with GMAP
-print_begin "GAWN: Annotating genome with transcriptome"
+print_begin "GAWN: Finding transcript positions on genome"
     ./01_scripts/02_annotate_genome.sh "$GENOME_NAME" "$TRANSCRIPTOME_NAME" "$NCPUS"
-print_finished
+    cp 04_annotation/"${GENOME_NAME%.fasta}".gff3 05_results
+print_finished "Finished: Finding transcript positions on genome"
 
 # Add UTR-3 and UTR-5 regions ->   GFF3 result file
-print_begin "GAWN: Adding UTR-3 and UTR-5 regions"
-    ./01_scripts/03_add_utrs.sh "$GENOME_NAME" "$TRANSCRIPTOME_NAME"
-print_finished
+#print_begin "GAWN: Adding UTR-3 and UTR-5 regions"
+#    ./01_scripts/03_add_utrs.sh "$GENOME_NAME" "$TRANSCRIPTOME_NAME"
+#print_finished
 
 # Create transcriptome annotation table (.tsv)
 print_begin "GAWN: Annotating transcriptome with swissprot"
+    echo "      blasting transcriptome..."
     ./01_scripts/04_blast_transcriptome_on_swissprot.sh "$TRANSCRIPTOME_NAME" "$SWISSPROT_DB" "$NCPUS"
+    echo
+
+    echo "      getting uniprot infos..."
     ./01_scripts/05_get_uniprot_info.sh "$TRANSCRIPTOME_NAME"
+    echo
+
+    echo "      annotating transcriptome..."
     ./01_scripts/06_annotate_transcriptome.py 03_data/"$TRANSCRIPTOME_NAME" \
         04_annotation/genbank_info 05_results/"${TRANSCRIPTOME_NAME%.fasta}_annotation_table.tsv"
-print_finished
+    echo
+
+print_finished "Finished: Annotating transcriptome with swissprot"
 
 # Create genome annotation table (.tsv)
-print_begin "GAWN: Annotating transcriptome with swissprot"
+print_begin "GAWN: Annotating genome using transcriptome"
+    echo "      creating annotation table..."
     ./01_scripts/07_create_genome_annotation_table.py \
         03_data/"$GENOME_NAME" \
-        05_results/"${GENOME_NAME%.fasta}".gawn_annotated.gff3 \
+        04_annotation/"${GENOME_NAME%.fasta}".gff3 \
         05_results/"${TRANSCRIPTOME_NAME%.fasta}"_annotation_table.tsv \
         05_results/"${GENOME_NAME%.fasta}"_annotation_table.tsv
-print_finished
+print_finished "Finished: Annotating genome using transcriptome"
+
+print_end

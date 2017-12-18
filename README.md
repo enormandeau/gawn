@@ -1,4 +1,10 @@
-# GAWN v0.2
+# GAWN v0.3.2
+
+# WARNING!
+
+- GAWN now requires blastplus 2.7.1+
+- UTR region annotation has been turned off since v0.3
+- The dependencies (mostly versions) have been updated
 
 ## Genome Annotation Without Nightmares
 
@@ -28,8 +34,8 @@ The .tsv tables are formatted to maximize usability by non-specialized users.
 This approach is especially useful to annotate genomes of species for which
 there is a good assembled transcriptome. It will also work when a good
 transcriptome is available for a related species. It provides only gene
-annotations for available transcripts then adds UTR regions. As such, it does
-not depend on *ab initio* gene prediction models.
+annotations for available transcripts. As such, it does not depend on *ab
+initio* gene prediction models.
 
 ## Overview of the analyses
 
@@ -37,13 +43,12 @@ During the analyses, the following steps are performed:
 
 - Index the genome (`GMAP`)
 - Annotate genes using available transcripts (`GMAP`)
-- Add 3' and 5' UTR regions (`cufflinks` and `TransDecoder`)
 - Annotate the transcripts (`blastx` and the Swissprot database)
 - Produce a transcriptome annotation table (Python script)
 - Produce a genome annotation table (Python script)
 - TODO: add CpG island annotations
 
-## Ressources needed
+## Resources needed
 
 **GAWN** depends on different tools to annotate genomes. The requirements in
 terms of RAM, disk space, and time, is dependent on these tools. Here are
@@ -65,7 +70,8 @@ To use **GAWN**, you will need a local copy of its repository, which can be
 [found here](https://github.com/enormandeau/gawn/archive/master.zip).
 
 Different releases can be
-[accessed here](https://github.com/enormandeau/gawn/releases).
+[accessed here](https://github.com/enormandeau/gawn/releases). We suggest using
+version 0.3.1 or a more recent version.
 
 ## Dependencies
 
@@ -75,16 +81,13 @@ these or more recent versions.
 
 - GNU Linux or OSX
 - bash 4+
-- python 2.7+
+- python 2.7+ or 3.6+
 - cufflinks v2.2.1+
-- gmap (2017-06-20)
+- gmap (2017-10-12)
 - wget 1.17.1
 - gnu parallel 2017xxxx+
-- blastplus utilities (blastx) 2.3.0+
-- a local copy of the swissprot database
-
-## Installing the depencencies
-### TODO
+- blastplus utilities (blastx) 2.7.1+
+- a local copy of the swissprot database (the .phr, .pin, .pnd, .pni ... files)
 
 The relevant TransDecoder scripts are included with their license in
 `01_scripts/TransDecoder`.

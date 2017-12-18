@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Create final genome annotation table
 
 Usage:
@@ -23,7 +23,7 @@ try:
     transcriptome_table = sys.argv[3]
     genome_table = sys.argv[4]
 except:
-    print __doc__
+    print(__doc__)
     sys.exit(1)
 
 # Read genome fasta file to keep track of scaffolds
@@ -79,14 +79,14 @@ with open(transcriptome_table) as infile:
                 gene_F = l[7]
                 gene_P = l[8]
             except:
-                gene_accession = "na"
-                gene_name = "na"
-                gene_altnames = "na"
-                gene_pfam = "na"
-                gene_go = "na"
-                gene_C = "na"
-                gene_F = "na"
-                gene_P = "na"
+                gene_accession = "-"
+                gene_name = "-"
+                gene_altnames = "-"
+                gene_pfam = "-"
+                gene_go = "-"
+                gene_C = "-"
+                gene_F = "-"
+                gene_P = "-"
 
             for path in transcripts[transcript_name]:
                 transcripts[transcript_name][path] += [

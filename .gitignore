@@ -8,6 +8,7 @@
 *.fq.gz
 *.html
 *.ignore
+*.log
 *.nhr
 *.nin
 *.nsq
