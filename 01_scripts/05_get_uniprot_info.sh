@@ -27,7 +27,7 @@ rm -r "$INFO_FOLDER" 2>/dev/null
 mkdir "$INFO_FOLDER"
 
 ## Run commands
-cat wget_genbank_commands.txt | parallel "eval {}"
+cat wget_genbank_commands.txt | xargs parallel "eval {}"
 
 ## Cleanup commands
 rm wget_genbank_commands.txt
