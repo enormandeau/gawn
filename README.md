@@ -3,7 +3,7 @@
 # WARNING!
 
 - GAWN now requires blastplus 2.7.1+
-- UTR region annotation has been turned off since v0.3
+- UTR region annotation has been removed since v0.3
 - The dependencies (mostly versions) have been updated
 
 ## Genome Annotation Without Nightmares
@@ -61,7 +61,6 @@ were run using the most recent genomes and transcriptomes available from Genbank
 |---------------------------|-----------|-----------|-----------------------|-----------|
 | Human genome              | 3.29      | 16        | 37                    | XX        |
 | *Salvelinus fontinalis*   | 2.67      | 14.3      | 31.2                  | XX        |
-| *Danio rerio*             | 1.70      | XX        | XX                    | XX        |
 | *Drosophila melanogaster* | 1.45      | 10.2      | 3.1                   | 28        |
 
 ## Installation
