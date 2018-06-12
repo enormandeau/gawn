@@ -1,11 +1,5 @@
 # GAWN v0.3.2
 
-# WARNING!
-
-- GAWN now requires blastplus 2.7.1+
-- UTR region annotation has been removed since v0.3
-- The dependencies (mostly versions) have been updated
-
 ## Genome Annotation Without Nightmares
 
 Developed by [Eric Normandeau](https://github.com/enormandeau) in
@@ -87,7 +81,7 @@ these or more recent versions.
 - gmap (2017-10-12)
 - wget 1.17.1
 - gnu parallel 2017xxxx+
-- blastplus utilities (blastx) 2.7.1+
+- blastplus utilities (blastx) 2.7.1+ (**Very important**, do not use old blastplus binaries)
 - a local copy of the [swissprot database](ftp://ftp.ncbi.nlm.nih.gov/blast/db/swissprot.tar.gz)
 
 The relevant TransDecoder scripts are included with their license in
@@ -118,7 +112,7 @@ folder.
 - A transcriptome annotation .tsv table
 - A genome annotation .tsv table
 
-## Test dataset ## WARNING TODO
+## Coming soon*ish* - Test dataset
 
 ### WARNING: Not yet available
 A test dataset is available as a
