@@ -112,16 +112,6 @@ folder.
 - A transcriptome annotation .tsv table
 - A genome annotation .tsv table
 
-## Coming soon*ish* - Test dataset
-
-### WARNING: Not yet available
-A test dataset is available as a
-[sister repository on GitHub](https://github.com/enormandeau/gawn_test_dataset).
-
-Download the repository and then move the data in **GAWN**'s `03_data` folder.
-Follow the normal pipeline procedure to analyse this small dataset. It should
-run in one to ten minutes depending on your computer.
-
 ## License
 
 CC share-alike
