@@ -15,11 +15,11 @@ laboratory with suggestions and important code contributions from
 
 ## Description
 
-**GAWN** is a genome annotation pipeline that uses assembled transcriptome,
+**GAWN** is a genome annotation pipeline that uses an assembled transcriptome (in nucleoties, not amino acids),
 either from the same species or from a related species, to create an
 evidence-based genome annotation. Its primary goal is to provide good enough
-genome annotation at a fraction of the time and effort required to run
-traditional genome annotation pipelines. It uses existing tools, such as GMAP,
+genome annotation with a fraction of the time and effort required to run
+more complete genome annotation pipelines. It uses existing tools, such as GMAP,
 TransDecoder, blastx, the Swissprot database, etc. to produce the annotation.
 The result files are:
 
@@ -59,18 +59,20 @@ were run using the most recent genomes and transcriptomes available from Genbank
 
 | Genome                    | Size (Gbp)| RAM (GB)  | Final disc space (GB) | Time (h)  |
 |---------------------------|-----------|-----------|-----------------------|-----------|
-| Human genome              | 3.29      | 16        | 37                    | XX        |
-| *Salvelinus fontinalis*   | 2.67      | 14.3      | 31.2                  | XX        |
+| Human genome              | 3.29      | 16        | 37                    | ~48       |
+| *Salvelinus fontinalis*   | 2.67      | 14.3      | 31.2                  | ~48       |
 | *Drosophila melanogaster* | 1.45      | 10.2      | 3.1                   | 28        |
 
 ## Installation
 
 To use **GAWN**, you will need a local copy of its repository, which can be
-[found here](https://github.com/enormandeau/gawn/archive/master.zip).
+[found here](https://github.com/enormandeau/gawn/archive/master.zip). Just
+download and unzip the folder. Use a new downloaded folder for each analysis.
 
 Different releases can be
 [accessed here](https://github.com/enormandeau/gawn/releases). We suggest using
-version 0.3.1 or a more recent version.
+the latest release. Avoid any release prior to 0.3.1. Some of these older releases
+are broken for some versions of the dependencies).
 
 ## Dependencies
 
@@ -86,25 +88,25 @@ these or more recent versions.
 - wget 1.17.1
 - gnu parallel 2017xxxx+
 - blastplus utilities (blastx) 2.7.1+
-- a local copy of the swissprot database (the .phr, .pin, .pnd, .pni ... files)
+- a local copy of the [swissprot database](ftp://ftp.ncbi.nlm.nih.gov/blast/db/swissprot.tar.gz)
 
 The relevant TransDecoder scripts are included with their license in
 `01_scripts/TransDecoder`.
 
 ## Running the pipeline
 
-For each new project, get a new copy of the project's repository from the
+For each new project, get a new copy of GAWN's repository from the
 sources listed in the **Installation** section and copy your data in the
 `03_data` folder.
 
 - Install dependencies
-- Download **GAWN** (see **Installation** section above)
+- Download **GAWN** repository (see **Installation** section above)
 - Put your genome and transcriptome fasta files (uncompressed) in `03_data`
-- Make a copy of `02_info/gawn_config.sh` and edit the parameters
+- Edit the parameters in `02_info/gawn_config.sh` (you can rename the file)
 - Run the following command:
 
 ```bash
-./gawn 02_info/MY_CONFIG_FILE.sh
+./gawn 02_info/gawn_config.sh  # or your renamed file
 ```
 
 ## Results
@@ -116,8 +118,7 @@ folder.
 - A transcriptome annotation .tsv table
 - A genome annotation .tsv table
 
-## Test dataset
-### TODO
+## Test dataset ## WARNING TODO
 
 ### WARNING: Not yet available
 A test dataset is available as a
