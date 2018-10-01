@@ -17,7 +17,7 @@ GENBANK_COMMANDS="wget_genbank_commands.txt"
 cat "$SWISSPROT_HITS" |
     while read i
     do
-        feature=$(echo $i | cut -d " " -f 1)
+        feature=$(echo $i | cut -d " " -f 1 | perl -pe 's/\|/\\|/g')
         hit=$(echo $i | cut -d " " -f 2 | cut -d "." -f 1)
         echo "wget -q -O - http://www.uniprot.org/uniprot/${hit}.txt > $INFO_FOLDER/${feature}.info"
     done > "$ANNOTATION_FOLDER"/"$GENBANK_COMMANDS"
