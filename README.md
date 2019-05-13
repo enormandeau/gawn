@@ -100,7 +100,7 @@ sources listed in the **Installation** section and copy your data in the
 - Run the following command:
 
 ```bash
-./gawn 02_info/gawn_config.sh  # or your renamed file
+./gawn 02_infos/gawn_config.sh  # or your renamed file
 ```
 
 ## Results
