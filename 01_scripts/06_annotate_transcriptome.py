@@ -50,7 +50,10 @@ class Info(object):
             with open(info_file) as ifile:
                 for line in ifile:
                     if line.startswith("AC"):
-                        self.accession = get_info(line)
+                        if len(self.accession) == 0:
+                            self.accession = get_info(line)
+                        else:
+                            self.accession = self.accession + " " + get_info(line)
                     elif line.startswith("DE   RecName: Full="):
                         l = line.replace("DE   RecName: Full=", "").strip()
                         l = l.replace(";", "")
