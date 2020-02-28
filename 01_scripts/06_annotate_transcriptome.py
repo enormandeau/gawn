@@ -50,7 +50,7 @@ class Info(object):
             with open(info_file) as ifile:
                 for line in ifile:
                     if line.startswith("AC"):
-                        if len(self.accession) == 0:
+                        if not self.accession:
                             self.accession = get_info(line)
                         else:
                             self.accession = self.accession + " " + get_info(line)
