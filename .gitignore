@@ -1,11 +1,14 @@
 *.Rhistory
 *.fa.gz
+*.fai
 *.fas.gz
 *.fasta
 *.fasta.gz
 *.fastq
 *.fastq.gz
 *.fq.gz
+*.gff
+*.gff3
 *.html
 *.ignore
 *.log
