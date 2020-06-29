@@ -11,6 +11,7 @@
 *.gff3
 *.html
 *.ignore
+*.info
 *.log
 *.nhr
 *.nin
@@ -19,6 +20,7 @@
 *.png
 *.ppt
 *.pptx
+*.unwrapped
 *.xls
 *.xlsx
 *.zip
