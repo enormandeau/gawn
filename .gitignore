@@ -1,11 +1,16 @@
 *.Rhistory
+*.bed
 *.fa.gz
 *.fai
+*.fas
 *.fas.gz
 *.fasta
 *.fasta.gz
 *.fastq
 *.fastq.gz
+*.fna
+*.fna.gz
+*.fq
 *.fq.gz
 *.gff
 *.gff3
@@ -16,6 +21,7 @@
 *.nhr
 *.nin
 *.nsq
+*.overlap
 *.pdf
 *.png
 *.ppt
@@ -25,6 +31,7 @@
 *.xlsx
 *.zip
 *~
+.fa
 .~lock*
 00_archive/log_files/*
 03_data/indexed*
