@@ -37,7 +37,8 @@ regions = defaultdict(list)
 with open(bedfile) as infile:
     for line in infile:
         l = line.strip().split("\t")
-        regions[l[0]].append([int(x) for x in l[1: 3]])
+        #regions[l[0]].append([int(x) for x in l[1: 3]])
+        regions[l[0]].append(l)
 
 # Find which genes overlap with the regions
 # Report each gene only once
@@ -56,10 +57,10 @@ with open(output_genes, "wt") as outfile:
             scaf = l[0]
             gene_range = [int(x) for x in l[1: 3]]
 
-            for region_range in regions[scaf]:
-                if overlaps(gene_range, region_range, flanking_size):
+            for region in regions[scaf]:
+                if overlaps(gene_range, [int(x) for x in region[1:3]], flanking_size):
                     gene = l[4]
                     
                     if gene not in found_genes:
                         found_genes.add(gene)
-                        outfile.write(gene + "\n")
+                        outfile.write("\t".join([gene] + region + l) + "\n")
