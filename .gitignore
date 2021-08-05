@@ -1,5 +1,6 @@
 *.Rhistory
 *.bed
+*.bed*.tsv
 *.fa.gz
 *.fai
 *.fas
@@ -26,6 +27,7 @@
 *.png
 *.ppt
 *.pptx
+*.tgz
 *.unwrapped
 *.xls
 *.xlsx
