@@ -74,5 +74,4 @@ with open(input_file, "rt") as infile:
 
     # Flush last read
     if info[2] != prev[2]:
-        print("Flushed last entry")
         outfile.write(line)
