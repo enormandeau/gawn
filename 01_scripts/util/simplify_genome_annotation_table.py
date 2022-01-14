@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Remove consecutive "identical" annotations from genome annotation table
+"""Remove "identical" annotations from genome annotation table that overlap enough
 
 Usage:
     <program> input_file max_region_increase output_file
@@ -8,6 +8,22 @@ Where:
     max_region_increase is the maximum increase in gene region size accepted.
     Should be between 1.0 and 2.0. Transcripts must overlap by at least 1bp
     to be considered.
+
+Note:
+    This script is not perfect. It removes the blatant duplications in
+    annotation but cannot remove some of them. It removes duplicated
+    annotations if they overlap enough AND if they meet one of the following
+    criteria: i) the gene ids are identical, ii) the GO terms are identical,
+    iii) the gene names (after removing anything following a comma ',' or a
+    curly bracket '{' and any trailing space) are identical. This leaves a
+    certain amount of annotations that overlap but which are not evidently
+    the same gene.
+
+    Care should be take if these simplified results are used for GO annotation
+    enrichment analyses. Indeed, some features of interest (SNPs, DE genes,
+    differently methylated regions, etc.) will then sometimes fall within or
+    near multiple annotations at a time, biasing the GO enrichment fisher
+    tests.
 """
 
 # Modules
@@ -47,7 +63,8 @@ except:
     sys.exit(1)
 
 # Read gff3 file and filter annotations
-prev = ("-1000", "0", "asdf")
+prev = [[-1000, -1000, "asdf", "asdf", "asdf"]]
+max_num_prev = 5
 
 with open(input_file, "rt") as infile:
     with open(output_file, "wt") as outfile:
@@ -60,18 +77,34 @@ with open(input_file, "rt") as infile:
 
             else:
                 l = line.strip().split("\t")
+
                 if l[6] in ["-", ""]:
                     continue
 
-                info = (l[1], l[2], l[6])
+                info = (l[1], l[2], l[6], l[7], l[10])
 
-                if info[2] == prev[2] and enough_overlap(info[:2], prev[:2], max_region_increase):
-                    continue
+                # Look for overlap of features that share the same:
+                keep = True
 
-                else:
+                for p in prev:
+                    if ((
+                        info[2] == p[2] or
+                        (info[3].split(",")[0].split("{")[0].strip() ==
+                            p[3].split(",")[0].split("{")[0].strip()) or
+                        info[4] == p[4]
+                        ) and
+                        enough_overlap(info[:2], p[:2], max_region_increase)):
+
+                        keep = False
+
+                if keep:
                     outfile.write(line)
-                    prev = info
 
-    # Flush last read
-    if info[2] != prev[2]:
-        outfile.write(line)
+                prev.append(info)
+
+                while len(prev) > max_num_prev:
+                    prev.pop(0)
+
+        # Flush last read
+        if info[2] != prev[2]:
+            outfile.write(line)
