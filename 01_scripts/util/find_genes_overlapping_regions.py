@@ -5,8 +5,7 @@ Usage:
     <program> genome_annotation bedfile flanking_size output_genes
 
 Parallel:
-    parallel 01_scripts/util/find_genes_overlapping_regions.py \
-            05_results/genome_annotation_table_simplified.tsv {} 0 {}.overlap ::: *.bed
+    parallel 01_scripts/util/find_genes_overlapping_regions.py 05_results/genome_annotation_table_simplified.tsv {} 0 {}.overlap ::: *.bed
 """
 
 # Modules
