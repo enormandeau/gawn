@@ -64,7 +64,7 @@ To use **GAWN**, you will need a local copy of its repository, which can be
 download and unzip the folder. Use a new downloaded folder for each analysis.
 
 Different releases can be
-[accessed here](https://github.com/enormandeau/gawn/releases). We suggest using
+[accessed here](https://github.com/enormandeau/gawn/tags). We suggest using
 the latest release. Avoid any release prior to 0.3.1. Some of these older releases
 are broken for some versions of the dependencies).
 
