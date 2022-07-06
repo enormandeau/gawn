@@ -82,7 +82,7 @@ these or more recent versions.
 - wget 1.17.1
 - gnu parallel 2017xxxx+
 - blastplus utilities (blastx) 2.7.1+ (**Very important**, do not use old blastplus binaries)
-- a local copy of the [swissprot database](ftp://ftp.ncbi.nlm.nih.gov/blast/db/swissprot.tar.gz)
+- a local copy of the swissprot database: ftp://ftp.ncbi.nlm.nih.gov/blast/db/swissprot.tar.gz
 
 The relevant TransDecoder scripts are included with their license in
 `01_scripts/TransDecoder`.
