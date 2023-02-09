@@ -57,7 +57,7 @@ with open(output_genes, "wt") as outfile:
             gene_range = [int(x) for x in l[1: 3]]
 
             for region_range in regions[scaf]:
-                if overlaps(gene_range, region_range, flanking_size):
+                if overlaps(gene_range[:], region_range[:], flanking_size):
                     gene = l[4]
                     
                     if gene not in found_genes:
