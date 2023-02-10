@@ -5,8 +5,7 @@ Usage:
     <program> genome_annotation bedfile flanking_size output_genes
 
 Parallel:
-    parallel 01_scripts/util/find_genes_overlapping_regions.py \
-            05_results/genome_annotation_table_simplified.tsv {} 0 {}.overlap ::: *.bed
+    parallel 01_scripts/util/find_genes_overlapping_regions.py 05_results/genome_annotation_table_simplified.tsv {} 0 {}.overlap ::: *.bed
 """
 
 # Modules
@@ -58,7 +57,7 @@ with open(output_genes, "wt") as outfile:
             gene_range = [int(x) for x in l[1: 3]]
 
             for region in regions[scaf]:
-                if overlaps(gene_range, [int(x) for x in region[1:3]], flanking_size):
+                if overlaps(gene_range[:], [int(x) for x in region[1:3]], flanking_size):
                     gene = l[4]
                     
                     if gene not in found_genes:

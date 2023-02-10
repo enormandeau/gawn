@@ -1,4 +1,4 @@
-# GAWN v0.3.2 
+# GAWN v0.3.5 
 
 ## Genome Annotation Without Nightmares
 
@@ -64,7 +64,7 @@ To use **GAWN**, you will need a local copy of its repository, which can be
 download and unzip the folder. Use a new downloaded folder for each analysis.
 
 Different releases can be
-[accessed here](https://github.com/enormandeau/gawn/releases). We suggest using
+[accessed here](https://github.com/enormandeau/gawn/tags). We suggest using
 the latest release. Avoid any release prior to 0.3.1. Some of these older releases
 are broken for some versions of the dependencies).
 
@@ -82,7 +82,7 @@ these or more recent versions.
 - wget 1.17.1
 - gnu parallel 2017xxxx+
 - blastplus utilities (blastx) 2.7.1+ (**Very important**, do not use old blastplus binaries)
-- a local copy of the [swissprot database](ftp://ftp.ncbi.nlm.nih.gov/blast/db/swissprot.tar.gz)
+- a local copy of the swissprot database: ftp://ftp.ncbi.nlm.nih.gov/blast/db/swissprot.tar.gz
 
 The relevant TransDecoder scripts are included with their license in
 `01_scripts/TransDecoder`.
