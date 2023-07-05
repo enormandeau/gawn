@@ -71,21 +71,42 @@ with open(transcriptome_table) as infile:
 
             try:
                 gene_accession = l[1]
-                gene_name = l[2]
-                gene_altnames = l[3]
-                gene_pfam = l[4]
-                gene_go = l[5]
-                gene_C = l[6]
-                gene_F = l[7]
-                gene_P = l[8]
             except:
                 gene_accession = "-"
+
+            try:
+                gene_name = l[2]
+            except:
                 gene_name = "-"
+
+            try:
+                gene_altnames = l[3]
+            except:
                 gene_altnames = "-"
+
+            try:
+                gene_pfam = l[4]
+            except:
                 gene_pfam = "-"
+
+            try:
+                gene_go = l[5]
+            except:
                 gene_go = "-"
+
+            try:
+                gene_C = l[6]
+            except:
                 gene_C = "-"
+
+            try:
+                gene_F = l[7]
+            except:
                 gene_F = "-"
+
+            try:
+                gene_P = l[8]
+            except:
                 gene_P = "-"
 
             for path in transcripts[transcript_name]:
