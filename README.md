@@ -1,4 +1,4 @@
-# GAWN v0.3.5 
+# GAWN v0.3.6 
 
 ## Genome Annotation Without Nightmares
 
