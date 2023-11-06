@@ -89,11 +89,6 @@ print_begin "GAWN: Finding transcript positions on genome"
     cp 04_annotation/"${GENOME_NAME%.fasta}".gff3 05_results
 print_finished "Finished: Finding transcript positions on genome"
 
-# Add UTR-3 and UTR-5 regions ->   GFF3 result file
-#print_begin "GAWN: Adding UTR-3 and UTR-5 regions"
-#    ./01_scripts/03_add_utrs.sh "$GENOME_NAME" "$TRANSCRIPTOME_NAME"
-#print_finished
-
 # Create transcriptome annotation table (.tsv)
 print_begin "GAWN: Annotating transcriptome with swissprot"
     echo "      blasting transcriptome..."
