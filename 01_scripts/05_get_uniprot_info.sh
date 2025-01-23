@@ -18,9 +18,11 @@ cat "$SWISSPROT_HITS" |
     while read i
     do
         feature=$(echo $i | cut -d " " -f 1 | perl -pe 's/\|/\\|/g')
-        hit=$(echo $i | cut -d " " -f 2 | cut -d "." -f 1)
+        hit=$(echo $i | cut -d " " -f 2 | cut -d "." -f 1 | cut -d '|' -f 2)
         echo "wget -q -O - http://www.uniprot.org/uniprot/${hit}.txt > $INFO_FOLDER/${feature}.info"
     done > "$ANNOTATION_FOLDER"/"$GENBANK_COMMANDS"
+
+head "$ANNOTATION_FOLDER"/"$GENBANK_COMMANDS"
 
 ## Create info folder
 rm -r "$INFO_FOLDER" 2>/dev/null
