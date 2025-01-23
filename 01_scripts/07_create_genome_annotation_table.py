@@ -51,8 +51,8 @@ with open(genome_gff3) as infile:
             to_position = int(l[4])
             sense = l[6]
             transcript_info = l[8].split("=")[1].split(";")[0]
-            transcript_name = re.sub("\.path\d+$", "", transcript_info)
-            transcript_path = re.findall("path\d+$", transcript_info)[0]
+            transcript_name = re.sub(r"\.path\d+$", "", transcript_info)
+            transcript_path = re.findall(r"path\d+$", transcript_info)[0]
             transcripts[transcript_name][transcript_path] = [
                     scaffold_name,
                     from_position,
