@@ -4,4 +4,4 @@
 GENOME_NAME=$1
 
 # Index genome with GMAP
-gmap_build --dir 03_data 03_data/"$GENOME_NAME" -d indexed_genome
+gmap_build -D 03_data -d indexed_genome 03_data/"$GENOME_NAME"
