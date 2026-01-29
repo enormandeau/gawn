@@ -3,8 +3,7 @@
 ## Genome Annotation Without Nightmares
 
 Developed by [Eric Normandeau](https://github.com/enormandeau) in
-[Louis Bernatchez](http://www.bio.ulaval.ca/louisbernatchez/presentation.htm)'s
-laboratory with suggestions and important code contributions from
+Louis Bernatchez's laboratory with suggestions and important code contributions from
 [Jérémy Le Luyer](https://github.com/jleluyer).
 
 ## Description
